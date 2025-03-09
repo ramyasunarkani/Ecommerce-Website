@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
-import "./Store.css"; // Import CSS
-
+import "./Store.css"; 
+import { CartContext } from "../../data/CartData";
 const productsArr = [
   {
     title: "Album 1",
@@ -26,6 +26,7 @@ const productsArr = [
 ];
 
 const Store = () => {
+  const {addToCart }=useContext(CartContext)
   return (
     <>
       <Container className="my-5">
@@ -40,7 +41,14 @@ const Store = () => {
                 </div>
                 <div className="d-f flex-row justify-content-between">
                   <span className=" price m-3">${product.price}</span>
-                <Button variant="primary " className="fw-bold add-to-cart">
+                <Button variant="primary " className="fw-bold add-to-cart" type="submit" onClick={()=>addToCart({
+                  id:index,
+                  title:product.title,
+                  price:product.price,
+                  imageUrl:product.imageUrl,
+
+
+                })}>
                   ADD TO CART
                 </Button>
                 </div>

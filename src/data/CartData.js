@@ -3,38 +3,28 @@ import React, { createContext, useState } from "react";
 export const CartContext = createContext(); 
 
 const CartData = ({ children }) => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: 1, 
-      title: "Colors",
-      price: 100,
-      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-      quantity: 2,
-    },
-    {
-      id: 2,
-      title: "Black and white Colors",
-      price: 50,
-      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-      quantity: 3,
-    },
-    {
-      id: 3,
-      title: "Yellow and Black Colors",
-      price: 70,
-      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-      quantity: 1,
-    },
-  ]);
+  const [cartItems, setCartItems] = useState([]);
     const [show, setShow] = useState(false);
     const removeFromCart = (id) => {
     setCartItems((prevItems) => prevItems.filter(item => item.id !== id));
   };
+  const addToCart=(item)=>{
+    setCartItems((prev)=>{
+      const exit=prev.find(oldItem=>oldItem.id===item.id);
+      if(exit){
+        return prev.map(oldItem=>oldItem.id===item.id?{...oldItem,quantity:oldItem.quantity+1}:oldItem);
+      }
+      else{
+        return [...prev,{...item,quantity:1}];
+      }
+    })
+
+  }
 
   
 
   return (
-    <CartContext.Provider value={{ cartItems, setCartItems ,show,setShow,removeFromCart}}>
+    <CartContext.Provider value={{ cartItems, setCartItems ,show,setShow,removeFromCart,addToCart}}>
       {children}
     </CartContext.Provider>
   );
