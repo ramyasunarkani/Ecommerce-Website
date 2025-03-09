@@ -1,4 +1,3 @@
-/* Ensure the whole page takes full height */
 html,
 body,
 #root {
@@ -8,12 +7,10 @@ body,
     flex-direction: column;
 }
 
-/* This makes content expand and pushes the footer down */
 .main-content {
     flex: 1;
 }
 
-/* Footer Styling */
 footer {
     width: 100%;
 }

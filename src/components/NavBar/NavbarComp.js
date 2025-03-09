@@ -1,11 +1,10 @@
 import React from "react";
 import './NavbarComp.css';
 import { Link, useLocation } from "react-router-dom";
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
-
+import {  Container, Nav, Navbar } from "react-bootstrap";
+import CartButton from "../Cart/CartButton";
 const NavbarComp = () => {
   const location = useLocation(); // ✅ No Error Because Router is in App.js
-  let cartCount = 2; // Example cart count
 
   return (
     <header>
@@ -20,14 +19,7 @@ const NavbarComp = () => {
 
           {/* Cart Button (Only on Store Page) */}
           {location.pathname === "/store" && (
-            <Button variant="outline-light" className="cart-button position-relative">
-              Cart
-              {cartCount > 0 && (
-                <span className="cart-count position-absolute top-0 start-100 translate-middle badge bg-danger rounded-circle">
-                  {cartCount}
-                </span>
-              )}
-            </Button>
+           <CartButton/>
           )}
         </Container>
       </Navbar>
