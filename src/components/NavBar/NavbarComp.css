@@ -7,5 +7,41 @@
     font-weight: bold;
     padding:0;
     padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
     
 }
+
+.album{
+    margin: 0 auto;
+    border: 2px solid #56CCF2;
+    padding: 0 10px;
+    font-size: 2rem;
+    width: fit-content;
+}
+
+.play-button {
+    background-color: white;
+    /* Light blue background */
+    color: #56CCF2;
+    /* White play icon */
+    border: none;
+    border-radius: 50%;
+    /* Makes it circular */
+    width: 60px;
+    /* Size of button */
+    height: 60px;
+    font-size: 2rem;
+    /* Size of play symbol */
+    margin: 10px auto;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* .play-button:hover {
+    background-color: #2D9CDB;
+}
+
+.play-button:active {
+    transform: scale(0.95);
+} */

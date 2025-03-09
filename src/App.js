@@ -18,7 +18,7 @@ const App = () => {
           <NavbarComp />
           <Cart /> 
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/store" element={<Store />} />
             <Route path="/about" element={<About />} />
           </Routes>
