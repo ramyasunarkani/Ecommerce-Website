@@ -41,7 +41,8 @@ const Store = () => {
                 </div>
                 <div className="d-f flex-row justify-content-between">
                   <span className=" price m-3">${product.price}</span>
-                <Button variant="primary " className="fw-bold add-to-cart" type="submit" onClick={()=>addToCart({
+                <Button variant="primary " className="fw-bold add-to-cart" type="submit" 
+                onClick={()=>addToCart({
                   id:index,
                   title:product.title,
                   price:product.price,

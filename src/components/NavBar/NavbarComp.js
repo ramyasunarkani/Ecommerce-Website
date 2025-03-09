@@ -10,7 +10,7 @@ const NavbarComp = () => {
       <Navbar bg="dark" variant="dark">
         <Container>
           <Nav className="mx-auto">
-            <Nav.Link as={Link} to="/" className="text-white">HOME</Nav.Link>
+            <Nav.Link as={Link} to="/" className="text-white active">HOME</Nav.Link>
             <Nav.Link as={Link} to="/store" className="text-white">STORE</Nav.Link>
             <Nav.Link as={Link} to="/about" className="text-white">ABOUT</Nav.Link>
           </Nav>
