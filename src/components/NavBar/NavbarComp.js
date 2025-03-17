@@ -15,6 +15,8 @@ const NavbarComp = () => {
             <Nav.Link as={NavLink} to="/home" className={({ isActive }) => isActive ? "active-link" : ""}>HOME</Nav.Link>
             <Nav.Link as={NavLink} to="/store" className={({ isActive }) => isActive ? "active-link" : ""}>STORE</Nav.Link>
             <Nav.Link as={NavLink} to="/about" className={({ isActive }) => isActive ? "active-link" : ""}>ABOUT</Nav.Link>
+            <Nav.Link as={NavLink} to="/contactus" className={({ isActive }) => isActive ? "active-link" : ""}>CONTACT US</Nav.Link>
+
           </Nav>
 
           {location.pathname.startsWith("/store") && <CartButton />}

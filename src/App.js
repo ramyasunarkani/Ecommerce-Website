@@ -7,7 +7,7 @@ import NavbarComp from "./components/NavBar/NavbarComp";
 import Footer from "./components/Footer/Footer";
 import CartData from "./data/CartData";
 import Cart from "./components/Cart/Cart"; // ✅ Import Cart
-
+import ContactUs from "./components/ContactUs/ContactUs";
 import "./App.css";
 
 const App = () => {
@@ -16,11 +16,12 @@ const App = () => {
       <Router>
         <div className="main-content">
           <NavbarComp />
-          <Cart /> 
+          <Cart/>
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/store" element={<Store />} />
             <Route path="/about" element={<About />} />
+            <Route path="/contactus" element={<ContactUs/>}/>
           </Routes>
         </div>
         <Footer />
