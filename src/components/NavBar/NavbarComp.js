@@ -16,6 +16,7 @@ const NavbarComp = () => {
             <Nav.Link as={NavLink} to="/store" className={({ isActive }) => isActive ? "active-link" : ""}>STORE</Nav.Link>
             <Nav.Link as={NavLink} to="/about" className={({ isActive }) => isActive ? "active-link" : ""}>ABOUT</Nav.Link>
             <Nav.Link as={NavLink} to="/contactus" className={({ isActive }) => isActive ? "active-link" : ""}>CONTACT US</Nav.Link>
+            <Nav.Link as={NavLink} to="/login" className={({ isActive }) => isActive ? "active-link" : ""}>Login</Nav.Link>
 
           </Nav>
 
@@ -25,7 +26,7 @@ const NavbarComp = () => {
 
       <> 
         <h1 className="text-white m-1 band">The Generics
-        {(location.pathname === "/" || location.pathname === "/home") && (
+        {( location.pathname === "/home") && (
           
             <>
               <span className="album">Get our Latest Album</span>

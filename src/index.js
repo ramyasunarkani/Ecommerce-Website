@@ -9,6 +9,7 @@ import 'react-bootstrap'; // This is optional, as components are imported indivi
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+  
     <App />
   </React.StrictMode>
 );
