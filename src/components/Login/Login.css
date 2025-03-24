@@ -1,4 +1,3 @@
-/* Container styling */
 .login-container {
     max-width: 400px;
     margin: 4rem auto;
@@ -9,14 +8,12 @@
     text-align: center;
 }
 
-/* Header */
 .login-container h1 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
     color: #333;
 }
 
-/* Form styling */
 .login-form {
     display: flex;
     flex-direction: column;
@@ -47,14 +44,12 @@
     outline: none;
 }
 
-/* Error message */
 .error-message {
     color: #d9534f;
     font-size: 0.9rem;
     margin: 1rem 0;
 }
 
-/* Buttons */
 .actions {
     display: flex;
     justify-content: center;
@@ -82,7 +77,6 @@
     cursor: not-allowed;
 }
 
-/* Loading message */
 .loading {
     font-size: 1rem;
     color: #555;

@@ -1,36 +1,39 @@
 import React, { useState, useRef, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Login.css";                                 // ✅ Import CSS file
+import { Navigate } from "react-router-dom";  // ✅ Import Navigate for redirect
+import "./Login.css";
 import FormContext from "../../contextApi/FormContext";
 
 const Login = () => {
-  const navigate = useNavigate();
   const emailRef = useRef("");
   const passwordRef = useRef("");
-  
-  const formCtx = useContext(FormContext);             // ✅ Use FormContext
 
-  const [isLoading, setIsLoading] = useState(false);
+  const formCtx = useContext(FormContext);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // ✅ Redirect to home (or store) if already logged in
+  if (formCtx.isLoggedIn) {
+    return <Navigate to="/store" />;  
+  }
 
   const submitHandler = async (e) => {
     e.preventDefault();
     
     const enteredEmail = emailRef.current.value;
-    const enteredPassword = passwordRef.current.value;
+    const enteredPassword = emailRef.current.value;
 
     setIsLoading(true);
     setError(null);
 
     try {
       const response = await fetch(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyD0XCaT6bzwmQCIeY3UOurg8eECwDb2s6Q",
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCt-8tK9XB5eMsKsrQjAkXYg0pHPDH9zf4",
         {
           method: "POST",
           body: JSON.stringify({
             email: enteredEmail,
             password: enteredPassword,
-            returnSecureToken: true,
+            returnSecureToken: false,
           }),
           headers: {
             "Content-Type": "application/json",
@@ -45,15 +48,8 @@ const Login = () => {
         throw new Error(data.error?.message || "Authentication failed!");
       }
 
-      // ✅ Store the token in the context and localStorage
       formCtx.login(data.idToken);
-      
-      // Store the expiration time (1 hour later)
-      const expirationTime = new Date().getTime() + 3600000; 
-      localStorage.setItem("expirationTime", expirationTime);
-
-      // Redirect to the Store page after successful login
-      navigate("/store");
+      localStorage.setItem("token", data.idToken);  
 
     } catch (err) {
       setIsLoading(false);

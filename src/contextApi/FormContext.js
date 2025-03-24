@@ -1,34 +1,35 @@
 import React, { useState, useEffect } from "react";
 
-// Create the context
 const FormContext = React.createContext({
-  token: null,               // Store the auth token
-  isLoggedIn: false,         // Check if the user is logged in
-  login: (token) => {},      // Login function
-  logout: () => {},          // Logout function
+  token: null,                
+  isLoggedIn: false,          
+  login: (token) => {},       
+  logout: () => {},           
 });
 
 export const FormContextProvider = (props) => {
-  const initialToken = localStorage.getItem("token");
+  const initialToken = localStorage.getItem("token") || null;  // ✅ Get token from localStorage
   const [token, setToken] = useState(initialToken);
 
-  const isLoggedIn = !!token;  // Check if the token exists
+  const isLoggedIn = !!token;  // ✅ If token exists, user is logged in
 
+  // ✅ Login handler: store token in state and localStorage
   const loginHandler = (token) => {
     setToken(token);
-    localStorage.setItem("token", token);   // Store token in localStorage
+    localStorage.setItem("token", token);   
   };
 
+  // ✅ Logout handler: remove token from state and localStorage
   const logoutHandler = () => {
     setToken(null);
-    localStorage.removeItem("token");       // Remove token from localStorage
+    localStorage.removeItem("token");      
   };
 
-  // Automatically log the user out if the token expires
+  // ✅ Load token on mount (for persistence)
   useEffect(() => {
-    const expirationTime = localStorage.getItem("expirationTime");
-    if (expirationTime && new Date().getTime() > +expirationTime) {
-      logoutHandler();
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      setToken(storedToken);
     }
   }, []);
 
