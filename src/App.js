@@ -16,7 +16,6 @@ import FormContext from "./contextApi/FormContext";
 const ProtectedRoute = ({ children }) => {
   const formCtx = useContext(FormContext);
   
-  // ✅ Redirect to login if not authenticated
   return formCtx.isLoggedIn ? children : <Navigate to="/login" />;
 };
 
@@ -35,7 +34,6 @@ const App = () => {
             
             <Route path="/home" element={<Home />} />
             
-            {/* 🔥 Protected Store Route */}
             <Route
               path="/store"
               element={
@@ -48,7 +46,6 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/contactus" element={<ContactUs />} />
 
-            {/* ✅ Protect Products Page */}
             <Route 
               path="/product/:title" 
               element={
@@ -58,7 +55,6 @@ const App = () => {
               }
             />
 
-            {/* ✅ Only show login if not already logged in */}
             <Route
               path="/login"
               element={isLoggedIn ? <Navigate to="/store" /> : <Login />}
